@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        height: 100vh;
+      }
+      body {
+        display: flex;
+        flex-flow: column;
+        min-height: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        background: rgb(26, 24, 24);
+        background: url("film3.jpg") fixed no-repeat center center/cover;
+        /* position: relative; */
+      }
+      #clock {
+        border: solid slategrey 3px;
+        width: 300px;
+        height: 300px;
+        top: 45%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        box-shadow: inset 0 0 10px;
+        margin: auto;
+        /* background: red; */
+        position: relative;
+      }
+      #hour {
+        position: absolute;
+        height: 10px;
+        width: 20%;
+        background: rgb(0, 0, 0);
+        border-radius: 5px;
+        left: 30%;
+        top: calc(50% - 5px);
+        transform: rotate(0deg);
+        transform-origin: right center;
+      }
+      #minute {
+        position: absolute;
+        height: 8px;
+        width: 40%;
+        background: rgb(0, 0, 0);
+        border-radius: 5px;
+        left: 10%;
+        top: calc(50% - 4px);
+        transform: rotate(0deg);
+        transform-origin: right center;
+      }
+      #second {
+        position: absolute;
+        height: 6px;
+        width: 45%;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        left: 5%;
+        top: calc(50% - 3px);
+        transform: rotate(0deg);
+        transform-origin: right center;
+      }
+      #circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: border solid slategrey 1px;
+        box-shadow: inset 0 0 10px;
+      }
+
+      /* .progress1 {
+        width: 100%;
+        height: 10px;
+
+        border: 1px solid #333;
+        background: linear-gradient(90deg, #333 0%, #333 25%, #fff 25%, #fff 50%, #333 50%, #333 75%, #fff 75%, #fff 100%);
+        background-size: 20px 20px;
+        animation: progress 1s linear infinite;
+      }
+      .progress2 {
+        width: 100%;
+        height: 10px;
+        border: 1px solid #333;
+        background: linear-gradient(90deg, #333 0%, #333 25%, #fff 25%, #fff 50%, #333 50%, #333 75%, #fff 75%, #fff 100%);
+        background-size: 20px 20px;
+        animation: progress 1s linear infinite;
+      }
+
+      @keyframes progress {
+        from {
+          background-poistion: 0 0;
+        }
+        to {
+          background-position: 20px 0;
+        }
+      } */
+
+      .container {
+        width: 50%;
+        height: 50%;
+        /* background:red; */
+        margin-bottom:2rem;
+        margin-left:2rem;
+      }
+
+      .box {
+        width: 50%;
+        height: 100%;
+        background:url('film5.gif')  center center/cover;
+        margin:1rem;
+        border-radius:5%;
+        box-shadow: inset 0 0 30px linear-gradient(rgba(109, 108, 108, 0.5), rgba(109, 108, 108, 0.5) ) ;
+      }
+
+      .walking {
+        width: 215px;
+        height: 100%;
+        background: url("walking2.png") no-repeat right top/cover;
+        animation: walk 1s steps(4, end) infinite;
+      }
+      @keyframes walk {
+        0% {
+          background-position: 0  0;
+        }
+        100% {
+          background-position: -860px;
+        }
+      }
+
+      /* .timedot{
+            position:absolute;
+            font-family: ;
+
+        } */
+
+      /* #date{
+            height:50px;
+            width:300px;
+            background:rgb(52, 196, 240);
+            color:seashell;
+        } */
+    </style>
+  </head>
+  <body>
+    <div id="clock">
+      <div id="hour"></div>
+      <div id="minute"></div>
+      <div id="second"></div>
+      <div id="circle"></div>
+      <!-- <div class="timedot">1</div>
+        <div class="timedot">2</div>
+        <div class="timedot">3</div>
+        <div class="timedot">4</div>
+        <div class="timedot">5</div>
+        <div class="timedot">6</div>
+        <div class="timedot">7</div>
+        <div class="timedot">8</div>
+        <div class="timedot">9</div>
+        <div class="timedot">10</div>
+        <div class="timedot">11</div>
+        <div class="timedot">12</div> -->
+    </div>
+
+    <div class="container" style="align-self: flex-start;">
+      <div class="progress1"></div>
+      <div class="box" style="align-self: center">
+        <div class="walking" style="align-self: flex-end"></div>
+      </div>
+      <div class="progress2"></div>
+      
+    </div>
+    <script>
+      const hour = document.getElementById("hour");
+      const minute = document.getElementById("minute");
+      const second = document.getElementById("second");
+      const date = document.getElementById("date");
+
+      const setClock = () => {
+        const now = new Date();
+        const h = now.getHours();
+        const m = now.getMinutes();
+        const s = now.getSeconds();
+
+        hour.style.transform = `rotate(${h * 30 + 90}deg)`;
+        minute.style.transform = `rotate(${m * 6 + 90}deg)`;
+        second.style.transform = `rotate(${s * 6 + 90}deg)`;
+        date.style.color = "white";
+      };
+
+      setInterval(setClock, 1000);
+      setClock();
+    </script>
+  </body>
+</html>
