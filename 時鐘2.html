@@ -5,37 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-     
+
+html{
+  margin:0;
+}
+
 body{
-  background:url('walkingbeatles1.jpg') repeat-x;
+  background:url('walkingbeatles1.jpg') repeat-x center /contain;
+  display: flex;
+  align-items:center;
 }
 
             
 
 /* 底: beatles */
   .container{
-    width:1200px;
-    height:700px;
-    background:black;
-    border:1px solid #000;
+    margin:auto;
+    width:800px;
+    height:500px;
+    background:rgba(0, 0, 0, 0.5);
     position:relative;
-    top:1rem;
-    left:15%;
+    /* top:1rem;
+    left:15%; */
   }
+
+
   .pic{
-    width:1200px;
-    height:600px;
-    background:url('bigabbey_1.jpg') center center/cover;
-    margin-top:25px;
+    width:100%;
+    height:100%;
+    background:url('bigabbey_1.jpg') no-repeat center center/contain;
+   
   }
+
     
 
 
 /* 固定定位:  時鐘、動畫小人 */
-      #left{
-        height:350px;
-        width:350px;
-        top:25rem;
+      #box{
+        /* background:blue; */
+        height:300px;
+        width:300px;
+        top:40%;
         left:15rem;
         margin:5px 5px;
         position:fixed;
@@ -125,9 +135,10 @@ body{
     
     <div class="container" >
      <div class="pic"></div>
-    </div>
+     </div>
+    
   
-      <div id="left">
+      <div id="box">
         <div id="clock">
           <div id="hour"></div>
           <div id="minute"></div>
@@ -135,21 +146,22 @@ body{
           <div id="circle"></div>
           <div class="walking"></div>
         </div>
-         
-       
-          
-
+        
        </div>
     
      
       
     </div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script>
-      const hour = document.getElementById("hour");
-      const minute = document.getElementById("minute");
-      const second = document.getElementById("second");
-      const date = document.getElementById("date");
-
+        const hour = document.getElementById("hour");
+        const minute = document.getElementById("minute");
+        const second = document.getElementById("second");
+        const date = document.getElementById("date");
+     
+      
+      
+  // 時鐘
       const setClock = () => {
         const now = new Date();
         const h = now.getHours();
@@ -160,10 +172,14 @@ body{
         minute.style.transform = `rotate(${m * 6 + 90}deg)`;
         second.style.transform = `rotate(${s * 6 + 90}deg)`;
         date.style.color = "white";
+
       };
 
       setInterval(setClock, 1000);
       setClock();
+
+ 
+
     </script>
   </body>
 </html>
